@@ -1,0 +1,32 @@
+groups:
+  - name: node_exporter_rules
+    rules:
+      # Alert if CPU usage > 80%
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance)(rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) > 40
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "High CPU usage detected on {{ $labels.instance }}"
+          description: "CPU usage is above 80% for more than 1 minute."
+
+      # Alert if disk usage > 90%
+      - alert: HighDiskUsage
+        expr: (node_filesystem_size_bytes{mountpoint="/"} - node_filesystem_avail_bytes{mountpoint="/"}) / node_filesystem_size_bytes{mountpoint="/"} * 100 > 90
+        for: 30s
+        labels:
+          severity: critical
+        annotations:
+          summary: "High disk usage on {{ $labels.instance }}"
+          description: "Disk usage is above 90% for more than 1 minute."
+
+      # Alert if available memory < 100MB
+      - alert: LowMemory
+        expr: node_memory_MemAvailable_bytes < 100000000
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Low memory on {{ $labels.instance }}"
+          description: "Available memory is below 100MB for more than 1 minute."

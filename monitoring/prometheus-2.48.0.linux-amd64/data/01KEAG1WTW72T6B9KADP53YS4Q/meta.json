@@ -1,0 +1,17 @@
+{
+	"ulid": "01KEAG1WTW72T6B9KADP53YS4Q",
+	"minTime": 1767674801008,
+	"maxTime": 1767679200000,
+	"stats": {
+		"numSamples": 36483,
+		"numSeries": 440,
+		"numChunks": 440
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01KEAG1WTW72T6B9KADP53YS4Q"
+		]
+	},
+	"version": 1
+}

@@ -1,0 +1,27 @@
+# Global configuration
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: []
+
+# Rule files (none for now)
+rule_files:
+  - "/home/teju/self-healing-linux/remediation/rules.yaml"
+
+# Scrape configuration
+scrape_configs:
+  # Prometheus itself
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  # Node Exporter
+  - job_name: "node_exporter"
+    static_configs:
+      - targets: ["192.168.68.130:9100"]
+

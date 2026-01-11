@@ -1,0 +1,44 @@
+ts=2026-01-08T23:58:13.187Z caller=main.go:539 level=info msg="No time or size retention was set so using the default time retention" duration=15d
+ts=2026-01-08T23:58:13.188Z caller=main.go:583 level=info msg="Starting Prometheus Server" mode=server version="(version=2.48.0, branch=HEAD, revision=6d80b30990bc297d95b5c844e118c4011fad8054)"
+ts=2026-01-08T23:58:13.188Z caller=main.go:588 level=info build_context="(go=go1.21.4, platform=linux/amd64, user=root@26117804242c, date=20231116-04:35:21, tags=netgo,builtinassets,stringlabels)"
+ts=2026-01-08T23:58:13.188Z caller=main.go:589 level=info host_details="(Linux 6.8.0-90-generic #91-Ubuntu SMP PREEMPT_DYNAMIC Tue Nov 18 14:14:30 UTC 2025 x86_64 linuxnode1 (none))"
+ts=2026-01-08T23:58:13.188Z caller=main.go:590 level=info fd_limits="(soft=1048576, hard=1048576)"
+ts=2026-01-08T23:58:13.188Z caller=main.go:591 level=info vm_limits="(soft=unlimited, hard=unlimited)"
+ts=2026-01-08T23:58:13.189Z caller=query_logger.go:82 level=info component=activeQueryTracker msg="These queries didn't finish in prometheus' last run:" queries="[{\"query\":\"node_memory_MemAvailable_bytes \\u003c 1e+08\",\"timestamp_sec\":1767914430]"
+ts=2026-01-08T23:58:13.190Z caller=web.go:566 level=info component=web msg="Start listening for connections" address=0.0.0.0:9090
+ts=2026-01-08T23:58:13.193Z caller=main.go:1024 level=info msg="Starting TSDB ..."
+ts=2026-01-08T23:58:13.194Z caller=tls_config.go:274 level=info component=web msg="Listening on" address=[::]:9090
+ts=2026-01-08T23:58:13.194Z caller=tls_config.go:277 level=info component=web msg="TLS is disabled." http2=false address=[::]:9090
+ts=2026-01-08T23:58:13.194Z caller=dir_locker.go:77 level=warn component=tsdb msg="A lockfile from a previous execution already existed. It was replaced" file=/home/teju/self-healing-linux/data/lock
+ts=2026-01-08T23:58:13.199Z caller=head.go:601 level=info component=tsdb msg="Replaying on-disk memory mappable chunks if any"
+ts=2026-01-08T23:58:13.199Z caller=head.go:682 level=info component=tsdb msg="On-disk memory mappable chunks replay completed" duration=22.751µs
+ts=2026-01-08T23:58:13.199Z caller=head.go:690 level=info component=tsdb msg="Replaying WAL, this may take a while"
+ts=2026-01-08T23:58:13.227Z caller=db.go:898 level=warn component=tsdb msg="Encountered WAL read error, attempting repair" err="read records: corruption in segment data/wal/00000000 at 1408265: unexpected checksum d39af63f, expected ab19b2a4"
+ts=2026-01-08T23:58:13.227Z caller=wlog.go:426 level=warn component=tsdb msg="Starting corruption repair" segment=0 offset=1408265
+ts=2026-01-08T23:58:13.227Z caller=wlog.go:434 level=warn component=tsdb msg="Deleting all segments newer than corrupted segment" segment=0
+ts=2026-01-08T23:58:13.227Z caller=wlog.go:456 level=warn component=tsdb msg="Rewrite corrupted segment" segment=0
+ts=2026-01-08T23:58:13.239Z caller=db.go:902 level=info component=tsdb msg="Successfully repaired WAL"
+ts=2026-01-08T23:58:13.239Z caller=main.go:1045 level=info fs_type=EXT4_SUPER_MAGIC
+ts=2026-01-08T23:58:13.239Z caller=main.go:1048 level=info msg="TSDB started"
+ts=2026-01-08T23:58:13.239Z caller=main.go:1229 level=info msg="Loading configuration file" filename=/home/teju/self-healing-linux/monitoring/prometheus-2.48.0.linux-amd64/prometheus.yml
+ts=2026-01-08T23:58:13.243Z caller=main.go:1266 level=info msg="Completed loading of configuration file" filename=/home/teju/self-healing-linux/monitoring/prometheus-2.48.0.linux-amd64/prometheus.yml totalDuration=3.217899ms db_storage=16.241µs remote_storage=8.683µs web_handler=552ns query_engine=15.935µs scrape=909.669µs scrape_sd=75.999µs notify=74.412µs notify_sd=18.163µs rules=1.432356ms tracing=53.676µs
+ts=2026-01-08T23:58:13.243Z caller=main.go:1009 level=info msg="Server is ready to receive web requests."
+ts=2026-01-08T23:58:13.243Z caller=manager.go:1012 level=info component="rule manager" msg="Starting rule manager..."
+ts=2026-01-09T00:32:02.913Z caller=compact.go:523 level=info component=tsdb msg="write block" mint=1767907916009 maxt=1767909600000 ulid=01KEG2NQS144B2JAYVRBN2472X duration=63.592352ms
+ts=2026-01-09T00:32:02.916Z caller=head.go:1299 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=1.911028ms
+ts=2026-01-09T01:10:11.028Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=prometheus target=http://localhost:9090/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:10:17.849Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=node_exporter target=http://192.168.68.130:9100/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:10:26.022Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=prometheus target=http://localhost:9090/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:10:32.847Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=node_exporter target=http://192.168.68.130:9100/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:10:41.018Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=prometheus target=http://localhost:9090/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:10:45.286Z caller=manager.go:706 level=warn component="rule manager" file=/home/teju/self-healing-linux/remediation/rules.yaml group=node_exporter_rules name=HighCPUUsage index=0 msg="Rule sample appending failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:10:47.841Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=node_exporter target=http://192.168.68.130:9100/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:10:56.017Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=prometheus target=http://localhost:9090/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:11:02.853Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=node_exporter target=http://192.168.68.130:9100/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:11:11.018Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=prometheus target=http://localhost:9090/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:11:17.845Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=node_exporter target=http://192.168.68.130:9100/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:11:26.018Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=prometheus target=http://localhost:9090/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:11:32.855Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=node_exporter target=http://192.168.68.130:9100/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:11:41.018Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=prometheus target=http://localhost:9090/metrics msg="Scrape commit failed" err="write to WAL: log samples: write data/wal/00000002: no space left on device"
+ts=2026-01-09T01:11:47.845Z caller=scrape.go:1351 level=error component="scrape manager" scrape_pool=node_exporter target=http://192.168.68.130:9100/metrics msg="Scrape commit failed" err="write to WAL:ts=2026-01-09T01:16:56.098Z caller=compact.go:523 level=info component=tsdb msg="write block" mint=1767910608235 maxt=1767916800000 ulid=01KEG57XTP1YSQ3MVDDWN8G258 duration=76.084261ms
+ts=2026-01-09T01:16:56.104Z caller=head.go:1299 level=info component=tsdb msg="Head GC completed" caller=truncateMemory duration=2.541871ms
